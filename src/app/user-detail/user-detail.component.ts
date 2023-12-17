@@ -6,6 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -39,6 +40,14 @@ export class UserDetailComponent implements OnInit {
       console.log('Current user', this.user);
       console.log(this.user.firstName)
     });
+  }
+
+  editUserDetail(){
+    
+  }
+
+  editMenu(){
+
   }
 
 }
