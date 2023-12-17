@@ -1,0 +1,40 @@
+.user-detail-header {
+    color: #fff;
+    min-height: 250px;
+    background: #9d76e3;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+
+    img {
+    border-radius: 100%;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    }
+
+    .user-details {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .user-detail-box {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            margin-bottom: 0px!important;
+        }
+    }
+}
+
+.user-detail-body  {
+    padding: 20px;
+
+    .mat-mdc-card-content  {
+        padding: 0px;
+    }
+}
