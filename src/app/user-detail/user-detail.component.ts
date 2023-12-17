@@ -5,6 +5,8 @@ import { Firestore, addDoc, collection, collectionData, docData } from '@angular
 import { doc, onSnapshot } from "firebase/firestore";
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
 @Component({
@@ -43,11 +45,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   editUserDetail(){
-    
+    let dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user.toJason());
   }
 
   editMenu(){
-
+    let dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user.toJason());
   }
 
 }
