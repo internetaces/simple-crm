@@ -15,7 +15,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-  userID:any = '';
+  userId:any = '';
   user: User = new User();
   constructor(private route: ActivatedRoute, private firestore: Firestore, public dialog: MatDialog) { 
 
@@ -24,8 +24,8 @@ export class UserDetailComponent implements OnInit {
 
   // ID aus URL
   ngOnInit(): void{
-    this.userID = this.route.snapshot.paramMap.get('id');
-    console.log(this.userID);
+    this.userId = this.route.snapshot.paramMap.get('id');
+    console.log(this.userId);
     this.getUser();
   }
 
@@ -33,7 +33,7 @@ export class UserDetailComponent implements OnInit {
   getUser() {
     let usersCollection = collection(this.firestore, 'users');
     // Doc mit ID referenzieren
-    let userDoc = doc(usersCollection, this.userID);
+    let userDoc = doc(usersCollection, this.userId);
 
     // User Abonnieren
     docData(userDoc).subscribe((user: any) => {
@@ -47,11 +47,13 @@ export class UserDetailComponent implements OnInit {
   editUserDetail(){
     let dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJason());
+    dialog.componentInstance.userId = this.userId;
   }
 
   editMenu(){
     let dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJason());
+    dialog.componentInstance.userId = this.userId;
   }
 
 }
